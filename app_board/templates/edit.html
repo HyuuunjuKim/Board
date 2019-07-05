@@ -35,7 +35,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'new' %}">글쓰기</a>
+                    <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -60,13 +60,19 @@
         </div>
     </nav>
 
-    <!-- 본문 시작 -->
+    <!-- detal 본문 시작 -->
     <div class="container">
-        {% for post in posts.all %}
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.pub_date }}</p>
-            <p>{{ post.summary }}<a href="{% url 'detail' post.id %}">...더보기</a></p>
-        {% endfor %}
+        <h1>수정 페이지</h1>
+        <form action="{% url 'update' post.id %}" method = "POST">
+            {% csrf_token %}
+            <p>제목 : <input type="text" name="title" value="{{ post.title }}"></p>
+            <br>
+            <p>본문 : <input type="textarea" name="body" value="{{ post.body }}"></p>
+        
+        <a href="{% url 'home' %}">home으로 가기</a>
+        <hr>
+        <button type="submit">저장하기</button>
+    </form>
     </div>
 
 

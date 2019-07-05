@@ -60,12 +60,15 @@
         </div>
     </nav>
 
-    <!-- detal 본문 시작 -->
+    <!-- detail 본문 시작 -->
     <div class="container">
         <h1>{{ post.title }}</h1> <!-- views.py에서 {'post' : post_detail}로 작성함 -->
         <p>{{ post.pub_date }}</p>
         <p>{{ post.body }}</p>
         <a href="{% url 'home' %}">home으로 가기</a>
+        <hr>
+        <a href="{% url 'edit' post.id %}">수정하기</a>
+        <a href="{% url 'delete' post.id %}">삭제하기</a>
     </div>
 
 

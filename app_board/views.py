@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Board
+from django.utils import timezone
 
 # Create your views here.
 
@@ -10,3 +11,30 @@ def home(request) :
 def detail(request, post_id) :
     post_detail = get_object_or_404(Board, pk = post_id) #pk는 모델에서 찍어낸 객체 구분자
     return render(request, 'detail.html', {'post' : post_detail})
+
+def new(request) :
+    return render(request, 'new.html')
+
+def create(request) :
+    post = Board()
+    post.title = request.GET['title']
+    post.body = request.GET['body']
+    post.pub_date = timezone.datetime.now()
+    post.save()
+    return redirect('/board/' + str(post.id)) #redirect는 요청이 오면 저쪽 url로 보내줘
+
+def delete(request, post_id) :
+    delete_post = Board.objects.get(id=post_id)
+    delete_post.delete()
+    return redirect('home')
+
+def edit(request, post_id) :
+    edit_post = Board.objects.get(id=post_id)
+    return render(request, 'edit.html', {'post' : edit_post})
+
+def update(request, post_id) :
+    update_post = Board.objects.get(id = post_id)
+    update_post.title = request.POST['title']
+    update_post.body = request.POST['body']
+    update_post.save()
+    return redirect('home')
