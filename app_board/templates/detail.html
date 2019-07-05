@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1> <!-- views.py에서 {'post' : post_detail}로 작성함 -->
-    <p>{{ post.pub_date }}</p>
-    <p>{{ post.body }}</p>
+<div class="card">
+    <div class="card-body">
+        <h1>{{ post.title }}</h1> <!-- views.py에서 {'post' : post_detail}로 작성함 -->
+        <p>{{ post.pub_date }}</p>
+        <p>{{ post.body }}</p>
+    </div>
+</div>
+
     <a href="{% url 'home' %}">home으로 가기</a>
     <hr>
     <a href="{% url 'edit' post.id %}">수정하기</a>
