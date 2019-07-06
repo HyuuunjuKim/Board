@@ -2,18 +2,46 @@
 
 {% block content %}
 <div class="container">
-<div class="card">
-    <div class="card-body">
-        <h1>{{ post.title }}</h1> <!-- views.py에서 {'post' : post_detail}로 작성함 -->
-        <p>{{ post.pub_date }}</p>
-        <p>{{ post.body }}</p>
+    <div class="card">
+        <div class="card-body">
+            <h1>{{ post.title }}</h1> <!-- views.py에서 {'post' : post_detail}로 작성함 -->
+            <p>{{ post.pub_date }}</p>
+            <p>{{ post.body }}</p>
+        </div>
+    </div>
+    <div class="choice">
+        <div class="seeList">
+            <a href="{% url 'home' %}">목록보러 가기</a>
+        </div>
+        
+        <div class="changePost">
+            <a class="edit" href="{% url 'edit' post.id %}">수정하기</a>
+            <a class="delete" href="{% url 'delete' post.id %}">삭제하기</a>
+        </div>
     </div>
 </div>
-
-    <a href="{% url 'home' %}">home으로 가기</a>
-    <hr>
-    <a href="{% url 'edit' post.id %}">수정하기</a>
-    <a href="{% url 'delete' post.id %}">삭제하기</a>
-</div>
 </body>
+
+<style>
+    .card {
+        margin-top: 30px;
+    }
+    .choice a {
+        color: #2b457a;
+    }
+    .choice {
+        margin-top:30px;
+        margin-bottom: 30px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .changePost {
+        text-align: right;
+    }
+    .edit {
+        margin-right: 30px;
+    }
+    .delete {
+    }
+</style>
 {% endblock %}

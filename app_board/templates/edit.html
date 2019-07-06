@@ -2,17 +2,33 @@
 
 {% block content %}
 <div class="container">
-    <h1>수정 페이지</h1>
+    
     <form action="{% url 'update' post.id %}" method = "POST">
         {% csrf_token %}
-        <p>제목 : <input type="text" name="title" value="{{ post.title }}"></p>
-        <br>
-        <p>본문 : <input type="textarea" name="body" value="{{ post.body }}"></p>
+        <div class="edit_title">
+            <p>제목 : <input type="text" name="title" value="{{ post.title }}"></p>
+        </div>
+        <p>본문 : </p>
         
-        <a href="{% url 'home' %}">home으로 가기</a>
+        <textarea cols=100% rows=10 name="body" >{{ post.body }}</textarea>  
+            
         <hr>
-        <button type="submit">저장하기</button>
-    </form>
+        <div class="update">
+            <input class="btn btn-dark" type="submit" style="background-color: #2b457a;" value="저장하기">
+        </div>
+    <form>
 </div>
 </body>
+
+<style>
+    .edit_title {
+        margin-top: 30px;
+    }
+    .update {
+        text-align: right;
+    }
+    textarea {
+        width: 100%;
+    }
+</style>
 {% endblock %}}
