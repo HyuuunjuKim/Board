@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import app_board.views
+import app_portfolio.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app_board.views.home, name="home"),
     # url상속 적용
     path('board/', include('app_board.urls')),
+    path('portfolio/', app_portfolio.views.portfolio, name="portfolio"),
 ]
