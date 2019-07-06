@@ -26,4 +26,5 @@ urlpatterns = [
     # url상속 적용
     path('board/', include('app_board.urls')),
     path('portfolio/', app_portfolio.views.portfolio, name="portfolio"),
+    path('accounts/', include('app_accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
