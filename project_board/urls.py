@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 import app_board.views
 import app_portfolio.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,4 @@ urlpatterns = [
     # url상속 적용
     path('board/', include('app_board.urls')),
     path('portfolio/', app_portfolio.views.portfolio, name="portfolio"),
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
