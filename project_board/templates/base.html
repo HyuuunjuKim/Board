@@ -48,7 +48,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item"
-                            href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                            href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
                         <form id="logout" method="POST" action="{% url 'logout' %}">
                             {% csrf_token %} <input type="hidden" />
                         </form>
@@ -60,11 +60,11 @@
                 <li class="nav-item dropdown">
                         <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            사용자 확인
+                            로그인 상태가 아닙니다
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'signup' %}">SignUp</a>
-                            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            <a class="dropdown-item" href="{% url 'signup' %}">회원가입</a>
+                            <a class="dropdown-item" href="{% url 'login' %}">로그인</a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>
