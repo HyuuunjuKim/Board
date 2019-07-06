@@ -3,27 +3,31 @@
 {% block content %}
 <div class="container">
     <form action = "{% url 'create' %}">
-        <div class="new"></div>
-        
-            <input type="text" name="title" placeholder="게시글 제목">
-        
-        <textarea cols=40 rows=10 name="body" placeholder="게시글 내용"></textarea>
-        <br>
-    </div>
-        <input class="btn btn-dark" type="submit" style="background-color: #2b457a;" value="제출하기">
+        <div class="title">
+            <input type="text" name="title" placeholder="제목을 입력하세요">
+    
+            <textarea cols=40 rows=10 name="body" placeholder="내용을 입력하세요"></textarea>
+        </div>
+        <div class="new">
+            <input class="btn btn-dark" type="submit" style="background-color: #2b457a;" value="게시하기">
+        </div>
     </form>
 </div>
 </body>
 
 <style>
-    .new input {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        width: 100%;
-    }
     textarea {
         width: 100%;
     }
+    .new {
+        text-align: right;
+    }
+    .title input {
+        width: 100%;
+        margin-top:30px;
+        margin-bottom: 30px;
+    }
+
 
 </style>
 {% endblock %}
