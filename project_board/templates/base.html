@@ -37,18 +37,20 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <!-- login 된 상태 -->
-                {% if user.is_authenticated %} 
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                        <a class="nav-link" href="{% url 'new' %}" style="color: white;">글쓰기</a>
-                    </li>
+                    <a class="nav-link" href="{% url 'new' %}" style="color: white;">글쓰기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'portfolio' %}" style="color: white;">포트폴리오</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         환영합니다. {{user.username}}님
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"
-                            href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+                        <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
                         <form id="logout" method="POST" action="{% url 'logout' %}">
                             {% csrf_token %} <input type="hidden" />
                         </form>
@@ -58,16 +60,16 @@
                 <!-- login 안 된 상태 -->
                 {% else %}
                 <li class="nav-item dropdown">
-                        <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            로그인 상태가 아닙니다
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'signup' %}">회원가입</a>
-                            <a class="dropdown-item" href="{% url 'login' %}">로그인</a>
-                            <div class="dropdown-divider"></div>
-                        </div>
-                    </li>
+                    <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        로그인 상태가 아닙니다
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'signup' %}">회원가입</a>
+                        <a class="dropdown-item" href="{% url 'login' %}">로그인</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
                 {% endif %}
             </ul>
             <form class="form-inline my-2 my-lg-0">
