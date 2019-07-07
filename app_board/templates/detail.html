@@ -5,6 +5,7 @@
     <div class="card">
         <div class="card-body">
             <h1>{{ post.title }}</h1> <!-- views.py에서 {'post' : post_detail}로 작성함 -->
+            <p>{{ post.writer }}</p>
             <p>{{ post.pub_date }}</p>
             <p>{{ post.body }}</p>
         </div>

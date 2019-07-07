@@ -2,15 +2,30 @@
 
 {% block content %}
 <div class="container">
-    {% for post in posts.all %}
+    {% for post in page_posts %}
     <div class="card">
         <div class="card-body">
             <h1>{{ post.title }}</h1>
+            <p>{{ post.writer }}</p>
             <p>{{ post.pub_date }}</p>
             <p>{{ post.summary }}<a href="{% url 'detail' post.id %}">...더보기</a></p>
         </div>
     </div>
     {% endfor %}
+
+    {% if page_posts.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{page_posts.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    <span>{{page_posts.number}}</span>
+    <span>of</span>
+    <span>{{page_posts.paginator.num_pages}}</span>
+
+    {%if page_posts.has_next%}
+    <a href="?page={{page_posts.next_page_number}}">Next</a>
+    <a href="?page={{page_posts.paginator.num_pages}}">Last</a>
+    {%endif%}
 </div>
 </body>
 
@@ -19,10 +34,9 @@
         margin-top: 30px;
         margin-bottom: 30px;
     }
+
     .card {
         margin-top: 30px;
     }
-        
 </style>
 {% endblock %}
-
