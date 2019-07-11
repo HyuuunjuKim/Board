@@ -13,3 +13,8 @@ class Board(models.Model) :
 
     def summary(self) :
         return self.body[:100]
+
+class Comment(models.Model) :
+    writer = models.CharField(max_length = 200)
+    content = models.CharField(max_length = 200)
+    post = models.ForeignKey(Board, on_delete = models.CASCADE)

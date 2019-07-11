@@ -20,6 +20,14 @@
             <a class="delete" href="{% url 'delete' post.id %}">삭제하기</a>
         </div>
     </div>
+
+    <hr>
+    {% for comment in post.comments.all %}
+    <div class="comment">
+        <div class="writer">{{ comment.writer }}</div>
+        <div class="content">{{ comment.content }}</div>
+    </div>
+    {% endfor %}
 </div>
 </body>
 
