@@ -17,4 +17,4 @@ class Board(models.Model) :
 class Comment(models.Model) :
     writer = models.CharField(max_length = 200)
     content = models.CharField(max_length = 200)
-    post = models.ForeignKey(Board, on_delete = models.CASCADE)
+    post = models.ForeignKey(Board, on_delete = models.CASCADE, null=True, related_name='comments')

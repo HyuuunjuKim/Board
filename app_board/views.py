@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Board
+from .models import Comment
 from django.utils import timezone
 from django.core.paginator import Paginator
 
@@ -15,8 +16,8 @@ def home(request) :
 
 def detail(request, post_id) :
     post_detail = get_object_or_404(Board, pk = post_id) #pk는 모델에서 찍어낸 객체 구분자
-    comments = Comment.objects.filter(board = board.id)
-    return render(request, 'detail.html', {'post' : post_detail, 'comments' :comments })
+    
+    return render(request, 'detail.html', {'post' : post_detail})
 
 def new(request) :
     return render(request, 'new.html')
