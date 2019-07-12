@@ -12,20 +12,21 @@
         </div>
     </div>
     {% endfor %}
+    <div class="page">
+        {% if page_posts.has_previous %}
+        <a href="?page=1">처음 페이지</a>
+        <a href="?page={{page_posts.previous_page_number}}">이전 페이지</a>
+        {% endif %}
 
-    {% if page_posts.has_previous %}
-    <a href="?page=1">First</a>
-    <a href="?page={{page_posts.previous_page_number}}">Previous</a>
-    {% endif %}
+        <span>{{page_posts.number}}</span>
+        <span>of</span>
+        <span>{{page_posts.paginator.num_pages}}</span>
 
-    <span>{{page_posts.number}}</span>
-    <span>of</span>
-    <span>{{page_posts.paginator.num_pages}}</span>
-
-    {%if page_posts.has_next%}
-    <a href="?page={{page_posts.next_page_number}}">Next</a>
-    <a href="?page={{page_posts.paginator.num_pages}}">Last</a>
-    {%endif%}
+        {%if page_posts.has_next%}
+        <a href="?page={{page_posts.next_page_number}}">다음 페이지</a>
+        <a href="?page={{page_posts.paginator.num_pages}}">마지막 페이지</a>
+        {%endif%}
+    </div>
 </div>
 </body>
 
@@ -37,6 +38,9 @@
 
     .card {
         margin-top: 30px;
+    }
+    .page {
+        text-align: center;
     }
 </style>
 {% endblock %}
