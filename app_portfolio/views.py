@@ -5,3 +5,7 @@ from .models import Portfolio
 def portfolio(request) :
     portfolios = Portfolio.objects
     return render(request, 'portfolio.html', {'portfolios' : portfolios})
+
+def upload(request) :
+    portfolios = Portfolio.objects
+    return render(request, 'upload.html', {'portfolios' : portfolios})
